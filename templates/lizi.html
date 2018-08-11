@@ -1,0 +1,35 @@
+<html>
+<head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+            #main {
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="/static/echarts.js"></script>
+        <script type="text/javascript"   src="http://api.map.baidu.com/api?v=2.0&ak=tIZfVl30DL7C26LBv72rh6VsD0MC31Wq"></script>
+        <script src="/static/jquery-3.3.1.min.js"></script>
+        <script src="/static/require.js"></script>
+        <script src="/static/example2.js"></script>
+        <script type="text/javascript">
+            $.get('static/西安市.json', function(gansuJson) {
+        //echarts.registerMap('省份汉语名称', 省份拼音+Json);
+        echarts.registerMap('西安', gansuJson);
+        var chart = echarts.init(document.getElementById('main'));
+        chart.setOption({
+            series : [ {
+            type : 'map',
+            //map的值也是，省份汉语名称
+            map : '甘肃'
+            } ]
+        });
+    });
+        </script>
+    </body>
+</html>
